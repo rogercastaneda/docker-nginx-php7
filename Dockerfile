@@ -2,7 +2,7 @@
 # https://hub.docker.com/r/unblibraries/nginx-php/
 FROM unblibraries/nginx-php:alpine-php7
 
-LABEL version="0.4"
+LABEL version="0.2"
 LABEL description="Basic nginx image with ssl for local development projects"
 LABEL maintainer="roger.castaneda@bonzzu.com"
 
@@ -19,7 +19,7 @@ LABEL maintainer="roger.castaneda@bonzzu.com"
 # php-xmlreader php-xmlrpc php-xsl php-zip php-zlib
 
 RUN \
-  apk add --update openssh openssl php7-ctype php7-pdo php7-pdo_mysql php7-zip php7-xml php7-simplexml php7-xmlreader php7-mbstring php7-apcu php7-xmlrpc php7-memcached php7-dom php7-common php7-fileinfo php7-tokenizer php7-xmlwriter && \
+  apk add --update openssh openssl php7-ctype php7-pdo php7-pdo_mysql php7-zip php7-xml php7-simplexml php7-xmlreader php7-mbstring php7-apcu php7-xmlrpc php7-memcached php7-dom php7-common php7-fileinfo php7-tokenizer php7-xmlwriter php7-mysqli && \
   mkdir -p /etc/nginx/ssl && \
   openssl genrsa -out /etc/nginx/ssl/dummy.key 2048 && \
   openssl req -new -key /etc/nginx/ssl/dummy.key -out /etc/nginx/ssl/dummy.csr -subj "/C=GB/L=London/O=Company Ltd/CN=docker" && \
